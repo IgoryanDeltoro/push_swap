@@ -6,7 +6,7 @@
 /*   By: igoryan <igoryan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 10:55:57 by ibondarc          #+#    #+#             */
-/*   Updated: 2024/11/13 20:57:11 by igoryan          ###   ########.fr       */
+/*   Updated: 2024/11/13 21:42:03 by igoryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int					ft_strcmp(char *s1, char *s2);
 int					has_duplicate(t_list *lst, int new_value);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 void				ft_lstadd_back(t_list **lst, t_list *new);
+void				ft_lstclean(t_list **lst);
 t_list				*ft_lstnew(int num);
 t_list				*ft_lstlast(t_list *lst);
 
