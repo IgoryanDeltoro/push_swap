@@ -14,16 +14,17 @@
 
 void    ft_ra(t_list **lst_a)
 {
-    t_list data;
+    t_list	*first;
+    t_list	*temp;
     
-    if (!lst_a)
+    if (!(*lst_a) || !(*lst_a)->next)
         return ;
     printf("ra\n");
-    data = (*lst_a);
-    while ((*lst_a) != NULL)
-    {
-        (*lst_a) = (*lst_a)->next;
-    }
-    (*lst_a) = data;
-    (*lst_a)->next = NULL;
+    first = *lst_a;
+    *lst_a = (*lst_a)->next;
+    temp = *lst_a;
+    while (temp->next != NULL)
+        temp = temp->next;
+    temp->next = first;
+    first->next = NULL;
 }
