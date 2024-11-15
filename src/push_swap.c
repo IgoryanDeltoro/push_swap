@@ -6,13 +6,22 @@
 /*   By: igoryan <igoryan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:51:31 by ibondarc          #+#    #+#             */
-/*   Updated: 2024/11/13 21:53:44 by igoryan          ###   ########.fr       */
+/*   Updated: 2024/11/14 03:00:04 by igoryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int push_swap(t_list **lst, int ac, char **av)
+static void print_stack(t_list *lst)
+{
+    while (lst != NULL)
+    {
+        printf("[%d]\n", lst->data);
+        lst = lst->next;
+    }
+}
+
+static int push_swap(t_list **lst, int ac, char **av)
 {
     t_list *temp;
     int i;
@@ -22,12 +31,13 @@ int push_swap(t_list **lst, int ac, char **av)
     while (i < ac)
     {
         num = ft_atoi(av[i]);
-        if ((num == 0 && av[i][1] != '\0') || has_duplicate(*lst, num))
+        if ((num == 0 && av[i][0] != 48) || has_duplicate(*lst, num))
             return (0);
         temp = ft_lstnew(num);            
         ft_lstadd_back(&(*lst), temp);
         i++;
     }
+    ft_ra(&(*lst));
     return (1);
 }
 int main(int ac, char **av)
@@ -38,19 +48,13 @@ int main(int ac, char **av)
     if (ac > 3)
     {
         stack_a = NULL;
-        if (!ft_isdigit(ac, av))
-            return (printf("Error"), 1);
         res = push_swap(&stack_a, ac, av);
         if (!res)
         {
             printf("Error");
             ft_lstclean(&stack_a);
         }
-        while (stack_a != NULL)
-        {
-            printf("[%d]\n", stack_a->data);
-            stack_a = stack_a->next;
-        }
+        print_stack(stack_a);
     }
     else
         printf("Error");

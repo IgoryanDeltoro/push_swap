@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibondarc <ibondarc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igoryan <igoryan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:48:40 by ibondarc          #+#    #+#             */
-/*   Updated: 2024/11/13 18:23:12 by ibondarc         ###   ########.fr       */
+/*   Updated: 2024/11/13 22:21:35 by igoryan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,15 @@ int	ft_atoi(const char *nptr)
 
 	result = 0;
 	sign = whitespace(nptr, &i);
-	while (nptr[i] >= 48 && nptr[i] <= 57)
+	while (nptr[i])
 	{
-		result = result * 10 + (nptr[i] - 48);
-		i++;
+		if (!(nptr[i] >= 48 && nptr[i] <= 57))
+			return (0);
+		else
+		{
+			result = result * 10 + (nptr[i] - 48);
+			i++;
+		}
 	}
 	result *= sign;
 	if (result < INT_MIN || result > INT_MAX)
